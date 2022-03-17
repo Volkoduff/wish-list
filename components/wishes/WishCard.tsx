@@ -1,4 +1,4 @@
-import classes from "./wishCard.module.scss"
+import classes from "./WishCard.module.scss"
 import Wish from "../../models/wish";
 
 const WishCard: React.FC<{wish: Wish}> = (props) => {

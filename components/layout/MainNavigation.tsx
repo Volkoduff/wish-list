@@ -10,8 +10,8 @@ const MainNavigation: React.FC = () => {
             </Link>
             <nav className={classes.nav}>
                 <ul>
-                    <li><Link href="/wish-list">Wish list</Link></li>
-                    <li><Link href="/">exit</Link></li>
+                    <li><Link href="/wish-list" passHref>Wish list</Link></li>
+                    <li><Link href="/" passHref>exit</Link></li>
                 </ul>
             </nav>
         </header>
