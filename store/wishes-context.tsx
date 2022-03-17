@@ -8,12 +8,6 @@ type WishContextObj = {
     removeWish: (id: string) => void
 };
 
-type WishObjProps = {
-    wishTitle: string,
-    tag: string,
-    description: string
-}
-
 export const WishesContext = React.createContext<WishContextObj>({
     items: [],
     addWish: () => {},

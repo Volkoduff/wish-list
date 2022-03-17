@@ -6,7 +6,6 @@ const MainNavigation: React.FC = () => {
         <header className={classes.header}>
             <Link href="/">
                 <div className={classes.logo}>WishList</div>
-                {/*<Image width={400} height={110} src="/../public/logo(v.2).png"/>*/}
             </Link>
             <nav className={classes.nav}>
                 <ul>

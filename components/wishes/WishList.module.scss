@@ -31,7 +31,14 @@
     text-align: center;
   }
 }
-
+@keyframes slide-up {
+  from {
+    transform: translateY(20);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
 .newWishButton {
   width: 50px;
   height: 50px;

@@ -5,6 +5,12 @@
   flex-wrap: wrap;
 }
 
+@mixin flexAround {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+}
+
 // MEDIA QUERIES
 @mixin desktop {
   @media (max-width: 1199.98px) {

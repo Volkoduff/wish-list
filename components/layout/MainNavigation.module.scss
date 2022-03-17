@@ -2,10 +2,8 @@
 @import "./../../styles/variables";
 
 .header {
+  @include flexAround;
   margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
   box-shadow: 0 5px 20px -4px #0000008c;
 
   @include mobileBig {
@@ -47,7 +45,7 @@
   }
 
   a:active {
-    background-color: rgba(243, 154, 0, 0.27);
+
   }
 }
 
@@ -62,7 +60,7 @@
   li {
     margin-left: 1rem;
     padding: 2rem;
-    font-weight: 400;
+    font-weight: 600;
     color: $lightTextColor;
     text-transform: uppercase;
     cursor: pointer;

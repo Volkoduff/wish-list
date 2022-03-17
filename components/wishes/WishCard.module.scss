@@ -17,13 +17,14 @@
   }
 
   .wishCard__baseInfo {
-    background-image: $bg-light-silver-grad;
+    color: $lightTextColor;
+    background-image: $primary-dark-gradient;
     padding: 2rem;
   }
 
   .wishCard__optionalInfo {
     padding: 1.2rem;
-    background-image: $bg-dark-blue-color-grad;
+    background-image: $secondary-dark-gradient;
 
     //background: $darkblue;
   }
@@ -33,10 +34,6 @@
     padding-bottom: 75%;
     background-repeat: no-repeat;
     background-size: cover;
-  }
-
-  .wishCard__title {
-    color: $primaryTextColor;
   }
 }
 

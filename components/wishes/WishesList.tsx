@@ -5,12 +5,12 @@ import { WishesContext } from "../../store/wishes-context";
 
 const WishList: React.FC = () => {
     const wishesCtx = useContext(WishesContext);
-    console.log(wishesCtx.items);
+    const wishElementClasses = `${classes.wishList__element}`;
     return (
         <Fragment>
             <ul className={classes.wishList}>
                 {wishesCtx.items.map((wish) => (
-                    <li key={wish.id} className={classes.wishList__element} onClick={wishesCtx.removeWish.bind(null, wish.id)}>
+                    <li key={wish.id} className={wishElementClasses} onClick={wishesCtx.removeWish.bind(null, wish.id)}>
                         <WishCard wish={wish} />
                     </li>
                 ))}
