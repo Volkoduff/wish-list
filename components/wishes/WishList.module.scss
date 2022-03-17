@@ -1,0 +1,46 @@
+@import "./../../styles/mixins";
+
+.wishList {
+  @include flexCentered();
+  list-style: none;
+  padding: 0 0 10px 0;
+  margin: 0;
+  position: relative;
+
+  .wishList__element {
+    width: 25%;
+  }
+
+  @include desktop {
+    .wishList__element {
+      width: 33.33333333% /* при ширине браузера меньше 1200px будет по 3 блока в ряд */;
+    }
+  }
+  @include tablet {
+    .wishList__element {
+      width: 50% /* при ширине браузера меньше 992px будет по 2 блока в ряд */;
+    }
+  }
+  @include mobile {
+    .wishList__element {
+      width: 100% /* при ширине браузера меньше 576px будет по 1 блоку */;
+    }
+  }
+
+  h3 {
+    text-align: center;
+  }
+}
+
+.newWishButton {
+  width: 50px;
+  height: 50px;
+  background: #fff;
+  border-radius: 50%;
+  content: '+';
+  border: none;
+  font-size: 25px;
+  cursor: pointer;
+  margin: 0 auto 30px;
+  display: block;
+}

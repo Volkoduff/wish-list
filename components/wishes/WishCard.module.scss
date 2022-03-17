@@ -1,0 +1,51 @@
+@import "../../styles/variables";
+
+.wishCard {
+  color: $lightTextColor;
+  display: block;
+  padding: 0;
+  margin: 10px;
+  border-radius: 10px;
+  will-change: transform;
+  box-shadow: 0px 3px 20px -8px #0000005e;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+
+  &:hover {
+    box-shadow: 0px 3px 20px -8px rgba(0, 0, 0, 0.82);
+  }
+
+  .wishCard__baseInfo {
+    background-image: $bg-light-silver-grad;
+    padding: 2rem;
+  }
+
+  .wishCard__optionalInfo {
+    padding: 1.2rem;
+    background-image: $bg-dark-blue-color-grad;
+
+    //background: $darkblue;
+  }
+
+  &__cover {
+    width: 100%;
+    padding-bottom: 75%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .wishCard__title {
+    color: $primaryTextColor;
+  }
+}
+
+.wishCard__tag {
+  font-size: 12px;
+  border-radius: 8px;
+  width: fit-content;
+  background: $lightblue-transparent;
+  color: $lightTextColor;
+  padding: 2px 7px;
+}
+
