@@ -1,9 +1,10 @@
 import * as React from "react";
+import classes from "./Button.module.scss"
 
-const Button: React.FC<{name: string}> = (props) => {
+const Button: React.FC = (props) => {
     return (
-        <button>{props.name}</button>
+        <button className={classes.primaryButton}>{props.children}</button>
     )
-}
+};
 
 export default Button;

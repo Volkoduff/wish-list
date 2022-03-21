@@ -1,13 +1,12 @@
 $primaryTextColor: #101e19;
 $lightblue: #3D9DEA;
 $lightblue-transparent: #3d9dea66;
-$darkblue: rgba(50, 51, 50, 0.81);
+$darkblue: #343A4F;
 $lightTextColor: #D5E1EF;
+$border-raddy-color: #f920567d;
 
 $bg-dark-blue-color-grad: linear-gradient(120deg, #343A4F, #0F1620);
 $bg-light-silver-grad: linear-gradient(176deg, $lightblue-transparent, #ffffff);
-
-// NEW
 $main-bg-gradient: linear-gradient(90deg, rgb(59, 62, 64), rgb(21, 23, 31));
 $primary-dark-gradient: linear-gradient(177deg, rgba(23, 99, 160, 0.4), rgb(29, 31, 32));
 $secondary-dark-gradient: linear-gradient(120deg, rgb(46, 50, 66), rgb(18, 23, 31));

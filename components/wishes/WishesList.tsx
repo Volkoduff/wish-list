@@ -10,7 +10,9 @@ const WishList: React.FC = () => {
         <Fragment>
             <ul className={classes.wishList}>
                 {wishesCtx.items.map((wish) => (
-                    <li key={wish.id} className={wishElementClasses} onClick={wishesCtx.removeWish.bind(null, wish.id)}>
+                    <li key={wish.id} className={wishElementClasses}
+                        // onClick={wishesCtx.removeWish.bind(null, wish.id)}
+                    >
                         <WishCard wish={wish} />
                     </li>
                 ))}

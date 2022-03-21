@@ -1,12 +1,13 @@
 import {useContext, useRef} from "react";
 import classes from "./NewWishForm.module.scss"
 import Card from "../ui/Card/Card";
+import Button from "../ui/Button";
 import { WishesContext } from "../../store/wishes-context";
 
 const NewWishForm: React.FC = () => {
     const titleInputRef = useRef<HTMLInputElement>(null);
     const categoryInputRef = useRef<HTMLInputElement>(null);
-    const descriptionInputRef = useRef<HTMLTextAreaElement>(null);
+    const descriptionInputRef = useRef<HTMLInputElement>(null);
 
     const wishCtx = useContext(WishesContext);
 
@@ -28,19 +29,16 @@ const NewWishForm: React.FC = () => {
         <Card>
             <form className={classes.form} onSubmit={submitHandler}>
                 <div className={classes.control}>
-                    <label htmlFor='title'>Meetup Title</label>
-                    <input type='text' required id='title' ref={titleInputRef}/>
+                    <input type='text' required id='title' placeholder={'Wish name'} ref={titleInputRef}/>
                 </div>
                 <div className={classes.control}>
-                    <label htmlFor='category'>Category</label>
-                    <input type='text' id='category' ref={categoryInputRef}/>
+                    <input type='text' id='category' placeholder={'HashTag'} ref={categoryInputRef}/>
                 </div>
                 <div className={classes.control}>
-                    <label htmlFor='description'>Description</label>
-                    <textarea id='description' required ref={descriptionInputRef}/>
+                    <input id='description' placeholder={'Comment'} ref={descriptionInputRef}/>
                 </div>
                 <div className={classes.actions}>
-                    <button>Add Meetup</button>
+                    <Button>Add wish</Button>
                 </div>
             </form>
         </Card>

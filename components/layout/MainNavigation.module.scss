@@ -33,19 +33,24 @@
     transition: .4s linear;
 
     &:hover {
-      transition: .4s linear;
-      border: 2px solid;
-      border-image: linear-gradient(100deg, #f92056 38%, #00deff 65%);
+      border-image: linear-gradient(250deg, #f92056 38%, #00deff 65%);
       border-image-slice: 1;
     }
   }
 
-  a:hover {
+  a {
+    padding: 1.2rem;
+    border-radius: 7px;
 
   }
 
-  a:active {
+  a:hover {
+    background: #d5e1ef14;
+  }
 
+  a:active {
+    background: #d5e1ef14;
+    box-shadow: 0 0 0 1px #0B2349;
   }
 }
 
@@ -53,17 +58,15 @@
   ul {
     list-style: none;
     margin: 0;
+    height: 4rem;
     padding: 0;
-    display: flex;
-    align-items: baseline;
+    @include flexCentered
   }
   li {
     margin-left: 1rem;
-    padding: 2rem;
     font-weight: 600;
     color: $lightTextColor;
     text-transform: uppercase;
     cursor: pointer;
   }
 }
-

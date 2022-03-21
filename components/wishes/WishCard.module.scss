@@ -3,6 +3,7 @@
 .wishCard {
   color: $lightTextColor;
   display: block;
+  position: relative;
   padding: 0;
   margin: 10px;
   border-radius: 10px;
@@ -25,8 +26,6 @@
   .wishCard__optionalInfo {
     padding: 1.2rem;
     background-image: $secondary-dark-gradient;
-
-    //background: $darkblue;
   }
 
   &__cover {
@@ -40,9 +39,14 @@
 .wishCard__tag {
   font-size: 12px;
   border-radius: 8px;
-  width: fit-content;
   background: $lightblue-transparent;
   color: $lightTextColor;
   padding: 2px 7px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  width: fit-content;
+  max-width: 100%;
 }
 
