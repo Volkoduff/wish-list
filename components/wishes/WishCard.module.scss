@@ -50,3 +50,21 @@
   max-width: 100%;
 }
 
+.wishCard:hover .details__button {
+  opacity: 1;
+  transition: .1s ease-in-out;
+  height: 22px;
+}
+
+.details__button {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  background: #a43a54de;
+  text-align: center;
+  opacity: 0;
+  margin: 0;
+  height: 0;
+  padding: 0;
+}
+

@@ -6,14 +6,12 @@ type WishContextObj = {
     items: Wish[],
     addWish: (wishTitle: string, tag: string, description: string) => void,
     removeWish: (id: string) => void,
-    // getWish: (id: string) => Wish,
 };
 
 export const WishesContext = React.createContext<WishContextObj>({
     items: [],
     addWish: () => {},
     removeWish: (id: string) => {},
-    // getWish: (id: string) => {},
 });
 
 const WishesContextProvider: React.FC = (props) => {
@@ -28,13 +26,8 @@ const WishesContextProvider: React.FC = (props) => {
         setWishes((prev) => prev.filter((wish) => wish.id !== id));
     };
 
-    const getWishHandler = (id: string) => {
-        return wishes.find((wish) => wish.id === id)
-    };
-
     const contextValue: WishContextObj = {
         items: wishes,
-        // getWish: getWishHandler,
         addWish: addWishHandler,
         removeWish: removeWishHandler,
     };

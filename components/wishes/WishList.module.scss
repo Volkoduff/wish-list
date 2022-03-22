@@ -9,6 +9,7 @@
 
   .wishList__element {
     width: 25%;
+    position: relative;
   }
 
   @include desktop {
