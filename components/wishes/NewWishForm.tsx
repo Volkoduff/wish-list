@@ -38,7 +38,7 @@ const NewWishForm: React.FC = () => {
                     <input id='description' placeholder={'Comment'} ref={descriptionInputRef}/>
                 </div>
                 <div className={classes.actions}>
-                    <Button>Add wish</Button>
+                    <Button onClickHandler={() => {}}>Add wish</Button>
                 </div>
             </form>
         </Card>

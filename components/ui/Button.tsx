@@ -1,9 +1,13 @@
 import * as React from "react";
 import classes from "./Button.module.scss"
 
-const Button: React.FC = (props) => {
+const Button: React.FC<{onClickHandler: () => void | null}> = (props) => {
     return (
-        <button className={classes.primaryButton}>{props.children}</button>
+        <button
+            onClick={props.onClickHandler}
+            className={classes.primaryButton}>
+            {props.children}
+        </button>
     )
 };
 

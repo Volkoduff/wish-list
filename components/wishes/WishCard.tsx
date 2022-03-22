@@ -25,7 +25,7 @@ const WishCard: React.FC<{wish: Wish}> = (props) => {
             </div>
             <div className={classes.wishCard__optionalInfo}>
                 <span className={classes.wishCard__tag}>#{props.wish.category}</span>
-                <p>{props.wish.description}</p>
+                <p className={classes.wishCard__text}>{props.wish.description}</p>
             </div>
             <p className={classes.details__button} onClick={getDetailedInfoHandler}>Edit</p>
         </div>

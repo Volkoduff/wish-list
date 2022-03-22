@@ -1,18 +1,17 @@
-import { useRouter } from "next/router";
 import { NextPage } from "next";
+import { useRouter } from "next/router";
 import Head from "next/head";
 import WishDetails from "../../../components/wishes/WishDetails";
-import * as React from "react";
 
 const WishDetailPage: NextPage = () => {
     const router = useRouter();
-    const id = router.query.wishId;
+    const id: any = router.query.wishId;
 
     return (
         <div>
             <Head><title>{id}</title></Head>
             <p>{id}</p>
-            <WishDetails wishId={id} />
+            <WishDetails id={id} />
         </div>
     )
 };
