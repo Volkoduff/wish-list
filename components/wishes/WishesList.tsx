@@ -3,7 +3,7 @@ import classes from "./WishList.module.scss"
 import WishListElement from "./WishListElement";
 import { WishesContext } from "../../store/wishes-context";
 import Wish from "../../models/wish";
-import Button from "../ui/Button";
+import Button from "../ui/Button/Button";
 
 const mockData = [
     new Wish('Скачать дюну', 'Sci-fi', 'Поидее уже вышла'),

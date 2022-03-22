@@ -2,7 +2,7 @@ import classes from "./WishCard.module.scss"
 import Wish from "../../models/wish";
 import {useRouter} from "next/router";
 import * as React from "react";
-import IconButton from "../ui/IconButton";
+import IconButton from "../ui/Button/IconButton";
 import {MdDelete} from "react-icons/md";
 import {WishesContext} from "../../store/wishes-context";
 import {useContext} from "react";

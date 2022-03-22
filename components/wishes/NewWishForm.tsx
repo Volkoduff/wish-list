@@ -1,7 +1,7 @@
 import {useContext, useRef} from "react";
 import classes from "./NewWishForm.module.scss"
 import Card from "../ui/Card/Card";
-import Button from "../ui/Button";
+import Button from "../ui/Button/Button";
 import { WishesContext } from "../../store/wishes-context";
 
 const NewWishForm: React.FC = () => {
