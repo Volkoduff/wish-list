@@ -5,28 +5,50 @@ import Head from "next/head";
 import NewWishForm from "../../components/wishes/NewWishForm";
 import { WishesContext } from "../../store/wishes-context";
 
+interface FormWishData {
+    title: string;
+    category: string;
+    description: string; 
+}
+
 const WishListPage: NextPage = () => {
     const wishesCtx = useContext(WishesContext);
-    useEffect(() => {
-        const fetchWishes = async () => {
-            const res = await fetch('api/wishes');
-            const result = await res.json();
-            wishesCtx.updateItems(result.wishes)
-            debugger
+
+    const fetchWishes = async () => {
+        const res = await fetch('api/wishes');
+        const result = await res.json();
+        wishesCtx.updateItems(result.wishes)
+    }
+
+    const saveWish = async (data: FormWishData) => {
+        const response = await fetch('api/new-wish', {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                'Content-type': 'application/json'
+            }
+        })
+
+        if(response.ok) {
+            const res = await response.json()
+            console.log(res);
         }
-        fetchWishes();
-    }, []);
+    }
+
+    useEffect(() => { fetchWishes() }, []);
 
     return (
         <Fragment>
             <Head><title>Ваш список</title></Head>
-            <NewWishForm/>
+            <NewWishForm saveWish={saveWish} fetchWishes={fetchWishes} />
             <WishList/>
         </Fragment>
     )
 };
 
-// Выключенная SSR для списка желаний
+export default WishListPage;
+
+// Выключенная SSR для списка
 // export async function getStaticProps() {
 //     return {
 //         props: {
@@ -45,5 +67,3 @@ const WishListPage: NextPage = () => {
 //         }
 //     }
 // }
-
-export default WishListPage;
