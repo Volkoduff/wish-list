@@ -4,6 +4,12 @@ import Card from "../ui/Card/Card";
 import Button from "../ui/Button/Button";
 import { WishesContext } from "../../store/wishes-context";
 
+interface FormWishData {
+    title: string;
+    category: string;
+    description: string; 
+}
+
 const NewWishForm: React.FC = () => {
     const titleInputRef = useRef<HTMLInputElement>(null);
     const categoryInputRef = useRef<HTMLInputElement>(null);
@@ -22,8 +28,30 @@ const NewWishForm: React.FC = () => {
             return;
         }
         // TODO переделать на передачу обьекта а не кучи строковых параметров
-        wishCtx.addWish(enteredText, categoryText, descriptionText);
+        // wishCtx.addWish(enteredText, categoryText, descriptionText);
+
+        const data = {
+            title: enteredText,
+            category: categoryText,
+            description: descriptionText,
+        }
+
+        fetchData(data);
     };
+
+    const fetchData = async (data: FormWishData) => {
+        const response = await fetch('api/new-wish', {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                'Content-type': 'application/json'
+            }
+        })
+
+        if(response.ok) {
+            return response.json();
+        }
+    }
 
     return (
         <Card>
