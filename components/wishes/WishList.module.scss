@@ -25,6 +25,12 @@
   }
   @include mobile {
     .wishList__element {
+      width: 50% /* при ширине браузера меньше 576px будет по 1 блоку */;
+    }
+  }
+
+  @include mobileSmall {
+    .wishList__element {
       width: 100% /* при ширине браузера меньше 576px будет по 1 блоку */;
     }
   }

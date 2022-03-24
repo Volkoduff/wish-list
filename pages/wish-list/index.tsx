@@ -5,11 +5,11 @@ import Head from "next/head";
 import NewWishForm from "../../components/wishes/NewWishForm";
 import { WishesContext } from "../../store/wishes-context";
 
-interface FormWishData {
-    title: string;
-    category: string;
-    description: string; 
-}
+// interface FormWishData {
+//     title: string;
+//     category: string;
+//     description: string; 
+// }
 
 const WishListPage: NextPage = () => {
     const wishesCtx = useContext(WishesContext);
@@ -20,27 +20,27 @@ const WishListPage: NextPage = () => {
         wishesCtx.updateItems(result.wishes)
     }
 
-    const saveWish = async (data: FormWishData) => {
-        const response = await fetch('api/new-wish', {
-            method: "POST",
-            body: JSON.stringify(data),
-            headers: {
-                'Content-type': 'application/json'
-            }
-        })
+    // const saveWish = async (data: FormWishData) => {
+    //     const response = await fetch('api/new-wish', {
+    //         method: "POST",
+    //         body: JSON.stringify(data),
+    //         headers: {
+    //             'Content-type': 'application/json'
+    //         }
+    //     })
 
-        if(response.ok) {
-            const res = await response.json()
-            console.log(res);
-        }
-    }
+    //     if(response.ok) {
+    //         const res = await response.json()
+    //         console.log(res);
+    //     }
+    // }
 
     useEffect(() => { fetchWishes() }, []);
 
     return (
         <Fragment>
             <Head><title>Ваш список</title></Head>
-            <NewWishForm saveWish={saveWish} fetchWishes={fetchWishes} />
+            <NewWishForm fetchWishes={fetchWishes} />
             <WishList/>
         </Fragment>
     )

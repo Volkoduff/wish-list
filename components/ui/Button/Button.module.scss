@@ -37,6 +37,7 @@
   position: absolute;
   line-height: 14px;
   background: $primary-pinky-color;
+  box-shadow: 0 0 0 1px $primary-pinky-color;
   top: 10px;
   right: 10px;
 
@@ -45,8 +46,7 @@
     cursor: not-allowed;
   }
   &:hover {
-    transition: .2s ease-in-out;
-    box-shadow: 0 0 0 2px #505050;
+    box-shadow: 0 0 0 1px $primary-pinky-color;
     background: #626262;
   }
 }

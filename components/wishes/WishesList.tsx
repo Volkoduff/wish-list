@@ -8,7 +8,6 @@ const WishList: React.FC = (props) => {
 
     return (
         <Fragment>
-            {/* <Button onClickHandler={reloadHandler}>Reload</Button> */}
             <ul className={classes.wishList}>
                 {wishesCtx.items.map((wish) => <WishListElement key={wish.id} wishData={wish}/>)}
             </ul>

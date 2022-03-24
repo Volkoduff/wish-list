@@ -3,18 +3,21 @@ import classes from "./NewWishForm.module.scss"
 import Card from "../ui/Card/Card";
 import Button from "../ui/Button/Button";
 import { WishesContext } from "../../store/wishes-context";
+
 interface FormWishData {
     title: string;
     category: string;
     description: string; 
 }
 
-const NewWishForm: React.FC<{fetchWishes: () => void, saveWish: (data: FormWishData) => Promise<void>}> = (props) => {
+const NewWishForm: React.FC<{fetchWishes: () => void}> = (props) => {
     const titleInputRef = useRef<HTMLInputElement>(null);
     const categoryInputRef = useRef<HTMLInputElement>(null);
     const descriptionInputRef = useRef<HTMLInputElement>(null);
 
-    const submitHandler = (event: React.FormEvent) => {
+    const wishesCtx = useContext(WishesContext);
+
+    const submitHandler = async (event: React.FormEvent) => {
         event.preventDefault();
 
         const enteredText = titleInputRef.current!.value;
@@ -29,9 +32,11 @@ const NewWishForm: React.FC<{fetchWishes: () => void, saveWish: (data: FormWishD
             title: enteredText,
             category: categoryText,
             description: descriptionText,
+            date: new Date(),
         }
 
-        props.saveWish(data).then(() => props.fetchWishes())
+        await wishesCtx.addWish(data);
+        props.fetchWishes();
     };
 
     return (
