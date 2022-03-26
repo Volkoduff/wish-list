@@ -2,28 +2,6 @@
 @import "./../../../styles/variables";
 
 
-.primaryButton {
-  background: #525252;
-  border-radius: 5px;
-  border: none;
-  padding: 6px 20px;
-  color: $lightTextColor;
-  font-size: 13px;
-  box-shadow: 0 0 0 2px $primary-pinky-color;
-  text-transform: uppercase;
-  cursor: pointer;
-  margin: 0 auto;
-  display: block;
-
-  &:disabled {
-    opacity: .6;
-    cursor: not-allowed;
-  }
-  &:hover {
-    box-shadow: 0 0 0 2px #505050;
-    background: #626262;
-  }
-}
 
 .iconButton {
   border-radius: 4px;

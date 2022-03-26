@@ -9,7 +9,7 @@ const WishList: React.FC = (props) => {
     return (
         <Fragment>
             <ul className={classes.wishList}>
-                {wishesCtx.items.map((wish) => <WishListElement key={wish.id} wishData={wish}/>)}
+                {!wishesCtx.isLoadingState && wishesCtx.items.map((wish) => <WishListElement key={wish.id} wishData={wish}/>)}
             </ul>
         </Fragment>
     )

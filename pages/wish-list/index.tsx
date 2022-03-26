@@ -1,46 +1,34 @@
 import {NextPage} from "next";
 import React, {Fragment, useCallback, useContext, useEffect, useState} from "react";
+import classes from "./../../../WishList.module.scss"
 import WishList from "../../components/wishes/WishesList";
 import Head from "next/head";
 import NewWishForm from "../../components/wishes/NewWishForm";
 import { WishesContext } from "../../store/wishes-context";
 
-// interface FormWishData {
-//     title: string;
-//     category: string;
-//     description: string; 
-// }
-
 const WishListPage: NextPage = () => {
     const wishesCtx = useContext(WishesContext);
 
-    const fetchWishes = async () => {
-        const res = await fetch('api/wishes');
-        const result = await res.json();
-        wishesCtx.updateItems(result.wishes)
+    useEffect(() => { wishesCtx.fetchWishes() }, []);
+
+    const openModalHandler = () => {
+        // Рефактор требуется!!
+        wishesCtx.setModalState(true)
     }
-
-    // const saveWish = async (data: FormWishData) => {
-    //     const response = await fetch('api/new-wish', {
-    //         method: "POST",
-    //         body: JSON.stringify(data),
-    //         headers: {
-    //             'Content-type': 'application/json'
-    //         }
-    //     })
-
-    //     if(response.ok) {
-    //         const res = await response.json()
-    //         console.log(res);
-    //     }
-    // }
-
-    useEffect(() => { fetchWishes() }, []);
 
     return (
         <Fragment>
-            <Head><title>Ваш список</title></Head>
-            <NewWishForm fetchWishes={fetchWishes} />
+            <Head>
+                <title>Ваш список</title>
+            </Head>
+            <button 
+                disabled={wishesCtx.isLoadingState}
+                className='addWishButton' 
+                onClick={openModalHandler}>
+                New WISH
+                </button>
+            {wishesCtx.isModalOpen && <NewWishForm />}
+            {wishesCtx.isLoadingState && <p>Loding...</p>}
             <WishList/>
         </Fragment>
     )

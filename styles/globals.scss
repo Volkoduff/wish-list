@@ -29,22 +29,54 @@ main {
   @include mobile {
     padding: 0.3rem;
   }
+}
 
-  ::-webkit-scrollbar {
-    width: 1px;
-    height: 0;
-    background: rgba(0, 0, 0, 0);
-  }
+li.active > a {
+  background: #d5e1ef14;
+  box-shadow: 0 0 0 1px #b2c0d0a6, 0 0 26px -9px #b2c0d059;
+}
 
-  ::-webkit-scrollbar-track {
-    background-color: rgba(255, 6, 23, 0);
-  }
+li:hover > a {
+  background: #d5e1ef14;
+}
 
-  ::-webkit-scrollbar-button {
-    background-color: rgba(255, 6, 23, 0);
+.addWishButton {
+  padding: 8px 42px;
+  background: #233340;
+  color: #fff;
+  font-size: 15px;
+  font-size: 16px;
+  border: coral;
+  border-radius: 4px;
+  display: block;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 0 1px #f92056;
+  margin: 18px auto;
+  text-transform: uppercase;
+  &:hover {
+    box-shadow: 0 0 0 2px #f92056;
+    transition: 0.2s ease-in-out;
   }
+  &:disabled {
+    opacity: 0.6;
+  }
+}
 
-  ::-webkit-scrollbar-thumb {
-    background: $darkblue;
-  }
+::-webkit-scrollbar {
+  width: 1px;
+  height: 0;
+  background: rgba(0, 0, 0, 0);
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgba(255, 6, 23, 0);
+}
+
+::-webkit-scrollbar-button {
+  background-color: rgba(255, 6, 23, 0);
+}
+
+::-webkit-scrollbar-thumb {
+  background: $darkblue;
 }

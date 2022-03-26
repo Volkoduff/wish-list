@@ -1,8 +1,12 @@
 import classes from "./Button.module.scss"
 
-const IconButton: React.FC<{}> = (props) => {
+const IconButton: React.FC<{isDisabled: boolean, onClickHandler: any}> = (props) => {
     return (
-        <button className={classes.iconButton}>{props.children}</button>
+        <button 
+            onClick={props.onClickHandler} 
+            className={classes.iconButton} 
+            disabled={props.isDisabled}>{props.children}
+        </button>
     )
 };
 

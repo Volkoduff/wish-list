@@ -20,7 +20,7 @@ const WishCard: React.FC<{ wish: Wish }> = (props) => {
     };
 
     const deleteWishHandler = async (id: string) => {
-        await wishesCtx.removeWish(id)
+        wishesCtx.removeWish(id)
         // setIsdeleting(true);
         // setTimeout(() => {
         //     setIsdeleting(false);
@@ -29,9 +29,7 @@ const WishCard: React.FC<{ wish: Wish }> = (props) => {
 
     return (
         <div className={cardClasses}>
-            <div onClick={deleteWishHandler.bind(null, props.wish.id)}>
-                <IconButton><MdDelete /></IconButton>
-            </div>
+            <IconButton onClickHandler={deleteWishHandler.bind(null, props.wish.id)} isDisabled={wishesCtx.isLoadingState}><MdDelete /></IconButton>
             <div className={classes.wishCard__baseInfo}>
                 <h3 className={classes.wishCard__title}>{props.wish.title}</h3>
             </div>

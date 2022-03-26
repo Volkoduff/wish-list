@@ -39,19 +39,12 @@
   }
 
   a {
-    padding: 1.2rem;
+    padding: 0.7rem 1.2rem;
+    margin-left: 1rem;
     border-radius: 7px;
-
+    transition: .2s ease-in-out;
   }
 
-  a:hover {
-    background: #d5e1ef14;
-  }
-
-  a:active {
-    background: #d5e1ef14;
-    box-shadow: 0 0 0 1px #0B2349;
-  }
 }
 
 .nav {
@@ -63,7 +56,6 @@
     @include flexCentered
   }
   li {
-    margin-left: 1rem;
     font-weight: 600;
     color: $lightTextColor;
     text-transform: uppercase;

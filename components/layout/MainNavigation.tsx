@@ -1,7 +1,14 @@
 import classes from "./MainNavigation.module.scss"
 import Link from "next/link";
+import { useRouter } from "next/router";
+
+const Menu = [
+    {title: 'Wish List', path: '/wish-list'},
+    {title: 'Exit', path: '/'},
+] 
 
 const MainNavigation: React.FC = () => {
+    const router = useRouter();
     return (
         <header className={classes.header}>
             <Link href="/">
@@ -9,8 +16,9 @@ const MainNavigation: React.FC = () => {
             </Link>
             <nav className={classes.nav}>
                 <ul>
-                    <li><Link href="/wish-list" passHref>Wish list</Link></li>
-                    <li><Link href="/" passHref>exit</Link></li>
+                    {Menu.map((menuElement, key) => (
+                        <li key={key} className={router.pathname === menuElement.path ? 'active' : ''}><Link href={menuElement.path} passHref>{menuElement.title}</Link></li>
+                    ))}
                 </ul>
             </nav>
         </header>

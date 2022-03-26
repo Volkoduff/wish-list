@@ -1,16 +1,8 @@
 import {useContext, useRef} from "react";
 import classes from "./NewWishForm.module.scss"
-import Card from "../ui/Card/Card";
-import Button from "../ui/Button/Button";
 import { WishesContext } from "../../store/wishes-context";
 
-interface FormWishData {
-    title: string;
-    category: string;
-    description: string; 
-}
-
-const NewWishForm: React.FC<{fetchWishes: () => void}> = (props) => {
+const NewWishForm: React.FC = () => {
     const titleInputRef = useRef<HTMLInputElement>(null);
     const categoryInputRef = useRef<HTMLInputElement>(null);
     const descriptionInputRef = useRef<HTMLInputElement>(null);
@@ -35,27 +27,35 @@ const NewWishForm: React.FC<{fetchWishes: () => void}> = (props) => {
             date: new Date(),
         }
 
-        await wishesCtx.addWish(data);
-        props.fetchWishes();
+        wishesCtx.addWish(data);
     };
 
+    const closeModalHandler = () => {
+        wishesCtx.setModalState(false);
+    }
+
     return (
-        <Card>
+        <div className={classes.formWrap}>
+            <button onClick={closeModalHandler} className={classes.closeButon} >Close</button>
             <form className={classes.form} onSubmit={submitHandler}>
                 <div className={classes.control}>
-                    <input type='text' required id='title' placeholder={'Wish name'} ref={titleInputRef}/>
+                    <input type='text' required id='title' placeholder={'Wish name*'} ref={titleInputRef}/>
                 </div>
                 <div className={classes.control}>
-                    <input type='text' id='category' placeholder={'HashTag'} ref={categoryInputRef}/>
+                    <input type='text' required id='category' placeholder={'HashTag*'} ref={categoryInputRef}/>
                 </div>
                 <div className={classes.control}>
                     <input id='description' placeholder={'Comment'} ref={descriptionInputRef}/>
                 </div>
                 <div className={classes.actions}>
-                    <Button onClickHandler={() => {}}>Add wish</Button>
+                    <button 
+                        className={classes.submitButton}
+                        disabled={wishesCtx.isLoadingState}>
+                        Add wish
+                    </button>
                 </div>
             </form>
-        </Card>
+        </div>
     );
 };
 

@@ -1,6 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { MongoClient, ObjectId } from "mongodb"
-import Wish from "../../models/wish";
 const mongodbParams: string = 'mongodb+srv://db_user:Biosavar@cluster0.sq4au.mongodb.net/wishes?retryWrites=true&w=majority'
 
 type ResponseData = {
@@ -22,12 +21,15 @@ const handler = async (
 
         const wishes = wishesRaw.map((wish) => {
             return {
-                ...wish,
-                id: wish._id.toString( )
+                id: wish._id.toString(),
+                title: wish.title,
+                category: wish.category,
+                date: wish.date,
+                description: wish.description,
             }
         })
 
-
+        console.log(wishes)
         client.close();
 
         const resultJSON = {

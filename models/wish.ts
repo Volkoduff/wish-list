@@ -4,13 +4,13 @@ class Wish {
     description: string;
     id?: string;
     isNew?: false;
-    date: Date;
+    date?: Date;
 
     constructor(wishTitle: string, wishCategory: string = 'base', wishDescription: string, id: string) {
         this.title = wishTitle;
         this.category = wishCategory;
         this.description = wishDescription || '';
-        this.date = new Date();
+        this.id = id;
     }
 }
 

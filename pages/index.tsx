@@ -1,6 +1,6 @@
-import { NextPage } from 'next'
 import Head from 'next/head'
-import { Fragment } from 'react';
+import { NextPage } from 'next'
+import { Fragment } from 'react'
 
 const HomePage: NextPage = () => {
     return (
@@ -11,7 +11,7 @@ const HomePage: NextPage = () => {
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
             <main>
-                <h2>Welcome to the internet, take a look around....</h2>
+                <h2>Welcome!</h2>
             </main>
         </Fragment>
     );
