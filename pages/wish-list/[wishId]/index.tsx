@@ -10,7 +10,6 @@ const WishDetailPage: NextPage = () => {
     return (
         <div>
             <Head><title>{id}</title></Head>
-            <p>{id}</p>
             <WishDetails id={id} />
         </div>
     )

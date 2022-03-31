@@ -29,7 +29,7 @@ const WishCard: React.FC<{ wish: Wish }> = (props) => {
 
     return (
         <div className={cardClasses}>
-            <IconButton onClickHandler={deleteWishHandler.bind(null, props.wish.id)} isDisabled={wishesCtx.isLoadingState}><MdDelete /></IconButton>
+            <IconButton onClickHandler={deleteWishHandler.bind(null, props?.wish.id as string)} isDisabled={wishesCtx.isLoadingState}><MdDelete /></IconButton>
             <div className={classes.wishCard__baseInfo}>
                 <h3 className={classes.wishCard__title}>{props.wish.title}</h3>
             </div>

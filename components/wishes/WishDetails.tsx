@@ -17,6 +17,7 @@ const WishDetails: React.FC<{ id: string }> = (props) => {
             <Card>
                 <div className={classes.wishCard__baseInfo}>
                     <h3 className={classes.wishCard__title}>
+                        Загов
                         {wish?.title}
                     </h3>
                 </div>
