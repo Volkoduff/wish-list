@@ -5,7 +5,7 @@ import IconButton from "../ui/Button/IconButton";
 import { useRouter } from "next/router";
 import { MdDelete } from "react-icons/md";
 import { WishesContext } from "../../store/wishes-context";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import moment from "moment";
 
 const WishCard: React.FC<{ wish: Wish }> = (props) => {
@@ -20,11 +20,14 @@ const WishCard: React.FC<{ wish: Wish }> = (props) => {
     };
 
     const deleteWishHandler = async (id: string) => {
-        wishesCtx.removeWish(id)
-        // setIsdeleting(true);
-        // setTimeout(() => {
-        //     setIsdeleting(false);
-        // }, 200)
+        setIsdeleting(true);
+
+        // useEffect(() => {
+            setTimeout(() => {
+                wishesCtx.removeWish(id)
+                setIsdeleting(false);
+            }, 200)
+        // }, [])
     }
 
     return (

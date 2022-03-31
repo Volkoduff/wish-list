@@ -1,7 +1,7 @@
 import React, {Fragment, useContext, useEffect, useState} from "react";
 import classes from "./WishList.module.scss"
 import WishListElement from "./WishListElement";
-import { WishesContext } from "../../store/wishes-context";
+import { WishesContext } from "../../store/wishes-context";  
 
 const WishList: React.FC = (props) => {
     const wishesCtx = useContext(WishesContext);

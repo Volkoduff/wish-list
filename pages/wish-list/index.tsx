@@ -1,12 +1,11 @@
 import {NextPage} from "next";
-import React, {Fragment, useCallback, useContext, useEffect, useState} from "react";
-import classes from "./../../../WishList.module.scss"
+import React, {Fragment, useContext, useEffect} from "react";
 import WishList from "../../components/wishes/WishesList";
 import Head from "next/head";
 import NewWishForm from "../../components/wishes/NewWishForm";
 import { WishesContext } from "../../store/wishes-context";
 
-const WishListPage: NextPage = () => {
+const WishListPage: NextPage = () => { 
     const wishesCtx = useContext(WishesContext);
 
     useEffect(() => { wishesCtx.fetchWishes() }, []);
@@ -28,7 +27,7 @@ const WishListPage: NextPage = () => {
                 New WISH
                 </button>
             {wishesCtx.isModalOpen && <NewWishForm />}
-            {wishesCtx.isLoadingState && <p>Loding...</p>}
+            {wishesCtx.isLoadingState && <p className="loadingTextBig">Loading</p>}
             <WishList/>
         </Fragment>
     )

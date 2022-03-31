@@ -37,6 +37,12 @@ const WishesContextProvider: React.FC = (props) => {
     const [isModal, setIsModal] = useState<boolean>(false);
     const [wishes, setWishes] = useState<Wish[]>([]);
 
+    // const addWishHandler = (wishTitle: string, tag: string, description: string) => {
+    //     const wish = new Wish(wishTitle, tag, description);
+    //     setWishes((prev) => prev.concat(wish))
+    //     setWishes((prev) => prev.filter((wish) => wish.id !== id));
+    // };
+
     const addWishHandler = async (data: SendWishData) => {
         setIsloading(true);
         const response = await fetch('api/new-wish', {
@@ -48,7 +54,8 @@ const WishesContextProvider: React.FC = (props) => {
         })
 
         if(response.ok) {
-            const res = await response.json()
+            const res = await response.json();
+            console.log(res)
             await fetchWishesHandler();
             setIsloading(false);
             setIsModal(false);
