@@ -91,7 +91,9 @@
 .wishCard:hover .details__button {
   opacity: 1;
   transition: 0.1s ease-in-out;
-  height: 22px;
+  height: 30px;
+  border-radius: 10px;
+  line-height: 30px;
 }
 
 @include mobileBig {
