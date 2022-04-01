@@ -2,34 +2,27 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { MongoClient, ObjectId } from "mongodb"
 const mongodbParams: string = 'mongodb+srv://db_user:Biosavar@cluster0.sq4au.mongodb.net/wishes?retryWrites=true&w=majority'
 
-type ResponseData = {
-    message: string,
-    newId: string | ObjectId,
-}
-
 const handler = async (
     req: NextApiRequest,
-    res: NextApiResponse<ResponseData>
+    res: NextApiResponse<any>
 ) => {
-    if (req.method === 'POST') {
-        const data = req.body;
-        const { title, category, description, datenpm } = data;
+    if (req.method === "GET") {
+        const id = req.body;
         const client = await MongoClient.connect(mongodbParams);
         const db = client.db();
 
         const wishesCollection = db.collection('wishes-list');
-        const {insertedId} = await wishesCollection.insertOne(data);
-        console.log(insertedId)
+        const wish = await wishesCollection.findOne({_id: new ObjectId(id)});
+
+        console.log(wish)
 
         client.close();
 
         const resultJSON = {
-            message: 'Message about from back',
-            newId: insertedId
+            message: 'Ok',
+            wish
         }
 
         res.status(201).json(resultJSON)
     }
 }
-
-export default handler;

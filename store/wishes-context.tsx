@@ -18,7 +18,7 @@ type WishContextObj = {
     addWish: (data: SendWishData) => Promise<void>,
     removeWish: (id: string) => Promise<void>,
     fetchWishes: () => Promise<void>,
-
+    getWishFullData: (id: string) => Promise<void>
 }
 
 export const WishesContext = React.createContext<WishContextObj>({
@@ -30,6 +30,7 @@ export const WishesContext = React.createContext<WishContextObj>({
     addWish: async () => {},
     fetchWishes: async () => {},
     removeWish: async (id: string) => {},
+    getWishFullData: async (id: string) => {},
 });
 
 const WishesContextProvider: React.FC = (props) => {
@@ -93,6 +94,15 @@ const WishesContextProvider: React.FC = (props) => {
         setIsModal(isOpen)
     }
 
+    const getWishFullDataHandler = async (id: string) => {
+         const response = await fetch(`api/get-wish/?${id}`);
+        
+        if(response.ok) {
+            const result = await response.json();
+            return result;
+        }
+    }
+
     const contextValue: WishContextObj = {
         items: wishes,
         isLoadingState: isLoading,
@@ -101,6 +111,7 @@ const WishesContextProvider: React.FC = (props) => {
         addWish: addWishHandler,
         updateItems: updateItemsHandler,
         fetchWishes: fetchWishesHandler,
+        getWishFullData: getWishFullDataHandler,
         removeWish: removeWishHandler,
     };
 
