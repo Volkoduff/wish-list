@@ -29,7 +29,6 @@ const handler = async (
             }
         })
 
-        console.log(wishes)
         client.close();
 
         const resultJSON = {

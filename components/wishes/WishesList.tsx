@@ -7,11 +7,9 @@ const WishList: React.FC = (props) => {
     const wishesCtx = useContext(WishesContext);
 
     return (
-        <Fragment>
-            <ul className={classes.wishList}>
-                {!wishesCtx.isLoadingState && wishesCtx.items.map((wish) => <WishListElement key={wish.id} wishData={wish}/>)}
-            </ul>
-        </Fragment>
+        <ul className={classes.wishList}>
+            {wishesCtx.items.map((wish) => <WishListElement key={wish.id} wishData={wish}/>)}
+        </ul>
     )
 };
 

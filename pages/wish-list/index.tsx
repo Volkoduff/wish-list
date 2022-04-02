@@ -5,10 +5,16 @@ import Head from "next/head";
 import NewWishForm from "../../components/wishes/NewWishForm";
 import { WishesContext } from "../../store/wishes-context";
 
-const WishListPage: NextPage = () => { 
+const WishListPage: NextPage = () => {
     const wishesCtx = useContext(WishesContext);
 
-    useEffect(() => { wishesCtx.fetchWishes() }, []);
+    useEffect(() => { 
+        console.log(wishesCtx.isActualWishes)
+        if (!wishesCtx.isActualWishes) {
+            wishesCtx.fetchWishes()
+        }
+        console.log(wishesCtx.isActualWishes)
+     }, []);
 
     const openModalHandler = () => {
         // Рефактор требуется!!
@@ -24,10 +30,10 @@ const WishListPage: NextPage = () => {
                 disabled={wishesCtx.isLoadingState}
                 className='addWishButton' 
                 onClick={openModalHandler}>
-                New WISH
+                    +
                 </button>
             {wishesCtx.isModalOpen && <NewWishForm />}
-            {wishesCtx.isLoadingState && <p className="loadingTextBig">Loading</p>}
+            {/* {wishesCtx.isLoadingState && <p className="loadingTextBig">Loading</p>} */}
             <WishList/>
         </Fragment>
     )

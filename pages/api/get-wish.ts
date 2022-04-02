@@ -14,8 +14,6 @@ const handler = async (
         const wishesCollection = db.collection('wishes-list');
         const wish = await wishesCollection.findOne({_id: new ObjectId(id)});
 
-        console.log(wish)
-
         client.close();
 
         const resultJSON = {

@@ -10,6 +10,10 @@ body {
   background-image: $main-bg-gradient;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
     Helvetica Neue, sans-serif;
+
+  @include mobileBig {
+    background: #0f131a;
+  }
 }
 
 a {
@@ -19,15 +23,23 @@ a {
 
 * {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 main {
   margin: 0 auto;
   padding: 2rem 4rem;
   max-width: 1200px;
+  position: relative;
 
   @include mobile {
     padding: 0.3rem;
+  }
+
+  h2 {
+    text-align: center;
+    color: $lightTextColor;
+    font-size: 2rem;
   }
 }
 
@@ -41,27 +53,38 @@ li:hover > a {
 }
 
 .addWishButton {
-  padding: 8px 42px;
   background: #233340;
   color: #fff;
-  font-size: 15px;
-  font-size: 16px;
-  border: coral;
-  border-radius: 4px;
-  display: block;
+  border-radius: 50%;
   cursor: pointer;
   border: none;
   box-shadow: 0 0 0 1px #f92056;
-  margin: 18px auto;
-  text-transform: uppercase;
-  &:hover {
-    box-shadow: 0 0 0 2px #f92056;
-    transition: 0.2s ease-in-out;
-  }
-  &:disabled {
-    opacity: 0.6;
+  position: fixed;
+  right: 6rem;
+  bottom: 6rem;
+  height: 3rem;
+  width: 3rem;
+  font-size: 20px;
+  touch-action: none;
+  z-index: 10;
+
+  @include mobileBig {
+    position: fixed;
+    right: 3rem;
+    bottom: 3rem;
+    box-shadow: 0 0 0 1px #f92056, 0 0 19px -4px #000000d4;
   }
 }
+
+.addWishButton:hover {
+  box-shadow: 0 0 0 2px #f92056;
+  transition: 0.2s ease-in-out;
+}
+.addWishButton:disabled {
+  opacity: 0.6;
+}
+
+
 
 .loadingTextBig {
   font-size: 2rem;

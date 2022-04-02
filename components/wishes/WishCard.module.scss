@@ -109,10 +109,10 @@
 
   .wishCard {
     height: auto;
-    margin: 5px;
-    box-shadow: 0 0 0 1px #ffffff47, 0px 3px 20px -8px #0000005e;
+    margin: 7px 10px;
+    box-shadow: 0 0 0 2px #72727226;
     &:hover {
-      box-shadow: 0 0 0 1px #ffffff47, 0px 3px 20px -8px #0000005e;
+      box-shadow: 0 0 0 2px #72727226;
     }
   }
 }

@@ -8,7 +8,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
       <WishesContextProvider>
         <Layout>
-          <NextNProgress></NextNProgress>
+          {/* <NextNProgress></NextNProgress> */}
           <Component {...pageProps} />
         </Layout>
       </WishesContextProvider>

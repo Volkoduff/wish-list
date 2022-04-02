@@ -19,7 +19,6 @@ const handler = async (
 
         const wishesCollection = db.collection('wishes-list');
         const {insertedId} = await wishesCollection.insertOne(data);
-        console.log(insertedId)
 
         client.close();
 

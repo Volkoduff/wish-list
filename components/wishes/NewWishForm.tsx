@@ -39,13 +39,13 @@ const NewWishForm: React.FC = () => {
             <button onClick={closeModalHandler} className={classes.closeButon} >Close</button>
             <form className={classes.form} onSubmit={submitHandler}>
                 <div className={classes.control}>
-                    <input type='text' required id='title' placeholder={'Wish name*'} ref={titleInputRef}/>
+                    <input type='text' required  autoComplete="false" id='title' autoFocus placeholder={'Wish name*'} ref={titleInputRef}/>
                 </div>
                 <div className={classes.control}>
-                    <input type='text' required id='category' placeholder={'HashTag*'} ref={categoryInputRef}/>
+                    <input type='text' required  autoComplete="false" id='category' placeholder={'HashTag*'} ref={categoryInputRef}/>
                 </div>
                 <div className={classes.control}>
-                    <input id='description' placeholder={'Comment'} ref={descriptionInputRef}/>
+                    <input id='description' autoComplete="false" placeholder={'Comment'} ref={descriptionInputRef}/>
                 </div>
                 <div className={classes.actions}>
                     <button 
