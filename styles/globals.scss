@@ -43,6 +43,47 @@ main {
   }
 }
 
+.loader__wrap {
+  display: flex;
+  height: auto;
+  height: 60vh;
+}
+
+.loader__element {
+  margin: auto;
+  color: #ef2054;
+  animation: rotate 0.8s linear infinite forwards;
+}
+
+.loader__element_section {
+  font-size: 4rem;
+}
+
+.loader__element_button {
+  font-size: 1rem;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+    color: #ef2054;
+  }
+
+  20% {
+    transform: rotate(90deg);
+    color: #00deff;
+  }
+
+  90% {
+    transform: rotate(300deg);
+    color: #ef2054;
+  }
+  100% {
+    transform: rotate(360deg);
+    color: #ef2054;
+  }
+}
+
 li.active > a {
   background: #d5e1ef14;
   box-shadow: 0 0 0 1px #b2c0d0a6, 0 0 26px -9px #b2c0d059;

@@ -1,5 +1,6 @@
 import {NextPage} from "next";
 import React, {Fragment, useContext, useEffect} from "react";
+import { BiLoaderAlt } from "react-icons/bi"
 import WishList from "../../components/wishes/WishesList";
 import Head from "next/head";
 import NewWishForm from "../../components/wishes/NewWishForm";
@@ -33,7 +34,11 @@ const WishListPage: NextPage = () => {
                     +
                 </button>
             {wishesCtx.isModalOpen && <NewWishForm />}
-            {/* {wishesCtx.isLoadingState && <p className="loadingTextBig">Loading</p>} */}
+            {wishesCtx.isLoadingState && (
+                <div className="loader__wrap">
+                    <BiLoaderAlt className='loader__element loader__element_section'/>
+                </div>
+            )}
             <WishList/>
         </Fragment>
     )

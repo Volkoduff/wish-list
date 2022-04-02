@@ -1,6 +1,8 @@
 import {useContext, useRef} from "react";
 import classes from "./NewWishForm.module.scss"
 import { WishesContext } from "../../store/wishes-context";
+import { BiLoaderAlt } from "react-icons/bi";
+import { BsArrowLeft } from "react-icons/bs"
 
 const NewWishForm: React.FC = () => {
     const titleInputRef = useRef<HTMLInputElement>(null);
@@ -36,7 +38,7 @@ const NewWishForm: React.FC = () => {
 
     return (
         <div className={classes.formWrap}>
-            <button onClick={closeModalHandler} className={classes.closeButon} >Close</button>
+            <button onClick={closeModalHandler} className={classes.closeButon} ><BsArrowLeft></BsArrowLeft></button>
             <form className={classes.form} onSubmit={submitHandler}>
                 <div className={classes.control}>
                     <input type='text' required  autoComplete="false" id='title' autoFocus placeholder={'Wish name*'} ref={titleInputRef}/>
@@ -51,7 +53,7 @@ const NewWishForm: React.FC = () => {
                     <button 
                         className={classes.submitButton}
                         disabled={wishesCtx.isLoadingState}>
-                        Add wish
+                            {wishesCtx.isLoadingState ? <BiLoaderAlt className='loader__element loader__element_button'/> : 'Add wish'}
                     </button>
                 </div>
             </form>
