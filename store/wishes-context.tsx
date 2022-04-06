@@ -16,7 +16,6 @@ type WishContextObj = {
     isModalOpen: boolean,
     isActualWishes: boolean,
     setModalState: (isOpen: boolean) => void,
-    // updateItems: (items: Wish[]) => void,
     addWish: (data: SendWishData) => Promise<void>,
     removeWish: (id: string) => Promise<void>,
     fetchWishes: () => Promise<void>,

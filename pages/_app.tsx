@@ -3,15 +3,15 @@ import { AppProps } from 'next/app'
 import Layout from "../components/layout/Layout";
 import WishesContextProvider from "../store/wishes-context";
 import NextNProgress from 'nextjs-progressbar';
-
+import { Provider } from 'react-redux';
+import store from './../store/index'
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-      <WishesContextProvider>
+      <Provider store={store}>
         <Layout>
-          {/* <NextNProgress></NextNProgress> */}
           <Component {...pageProps} />
         </Layout>
-      </WishesContextProvider>
+      </Provider>
 
   )
 }
