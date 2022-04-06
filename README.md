@@ -1,7 +1,7 @@
 ## WishList
 
 ```
-
+Add and remove your wishes
 
 ```
 
