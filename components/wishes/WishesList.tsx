@@ -1,14 +1,38 @@
-import React, {Fragment, useContext, useEffect, useState} from "react";
+import React, { useEffect } from "react";
+import { BiLoaderAlt } from "react-icons/bi";
+import { useDispatch } from "react-redux";
+import { useActions } from "../../hooks/useActions";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import Wish from "../../models/wish";
 import classes from "./WishList.module.scss"
 import WishListElement from "./WishListElement";
-import { WishesContext } from "../../store/wishes-context";  
 
 const WishList: React.FC = (props) => {
-    const wishesCtx = useContext(WishesContext);
+    const { wishes, loading, error } = useTypedSelector((state) => state.wish);
+
+    wishes.sort((a: { date: string; }, b: { date: string; }) => Date.parse(b.date) - Date.parse(a.date));
+
+    const {fetchWishes} = useActions();
+
+    useEffect(() => {
+        fetchWishes()
+    }, [])
+
+    if (loading) {
+        return (
+            <div className="loader__wrap">
+                <BiLoaderAlt className='loader__element loader__element_section' />
+            </div>
+        )
+    }
+
+    if(error) {
+        return <h3>{error}</h3>
+    }
 
     return (
         <ul className={classes.wishList}>
-            {wishesCtx.items.map((wish) => <WishListElement key={wish.id} wishData={wish}/>)}
+            {wishes.map((wish: Wish) => <WishListElement key={wish.id} wishData={wish}/>)}
         </ul>
     )
 };

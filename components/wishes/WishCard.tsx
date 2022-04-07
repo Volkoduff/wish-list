@@ -4,7 +4,6 @@ import classes from "./WishCard.module.scss"
 import IconButton from "../ui/Button/IconButton";
 import { useRouter } from "next/router";
 import { MdDelete } from "react-icons/md";
-import { WishesContext } from "../../store/wishes-context";
 import { useContext, useState, useEffect } from "react";
 import moment from "moment";
 
@@ -12,7 +11,6 @@ const WishCard: React.FC<{ wish: Wish }> = (props) => {
     const [isDeleting, setIsdeleting] = useState<Boolean>(false)
     const cardClasses = `${isDeleting && classes.wishCard__fadeOut} ${classes.wishCard}`
 
-    const wishesCtx = useContext(WishesContext);
     const router = useRouter();
 
     const getDetailedInfoHandler = (event: React.MouseEvent) => {
@@ -24,7 +22,7 @@ const WishCard: React.FC<{ wish: Wish }> = (props) => {
 
         // useEffect(() => {
             setTimeout(() => {
-                wishesCtx.removeWish(id)
+                // wishesCtx.removeWish(id)
                 setIsdeleting(false);
             }, 200)
         // }, [])
@@ -32,7 +30,7 @@ const WishCard: React.FC<{ wish: Wish }> = (props) => {
 
     return (
         <div className={cardClasses}>
-            <IconButton onClickHandler={deleteWishHandler.bind(null, props?.wish.id as string)} isDisabled={wishesCtx.isLoadingState}><MdDelete /></IconButton>
+            {/* <IconButton onClickHandler={deleteWishHandler.bind(null, props?.wish.id as string)} isDisabled={wishesCtx.isLoadingState}><MdDelete /></IconButton> */}
             <div className={classes.wishCard__baseInfo}>
                 <h3 className={classes.wishCard__title}>{props.wish.title}</h3>
             </div>

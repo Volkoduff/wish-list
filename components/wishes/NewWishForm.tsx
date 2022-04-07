@@ -1,6 +1,5 @@
 import {useContext, useRef} from "react";
 import classes from "./NewWishForm.module.scss"
-import { WishesContext } from "../../store/wishes-context";
 import { BiLoaderAlt } from "react-icons/bi";
 import { BsArrowLeft } from "react-icons/bs"
 
@@ -8,8 +7,6 @@ const NewWishForm: React.FC = () => {
     const titleInputRef = useRef<HTMLInputElement>(null);
     const categoryInputRef = useRef<HTMLInputElement>(null);
     const descriptionInputRef = useRef<HTMLInputElement>(null);
-
-    const wishesCtx = useContext(WishesContext);
 
     const submitHandler = async (event: React.FormEvent) => {
         event.preventDefault();
@@ -29,11 +26,11 @@ const NewWishForm: React.FC = () => {
             date: new Date(),
         }
 
-        wishesCtx.addWish(data);
+        // wishesCtx.addWish(data);
     };
 
     const closeModalHandler = () => {
-        wishesCtx.setModalState(false);
+        // wishesCtx.setModalState(false);
     }
 
     return (
@@ -52,8 +49,9 @@ const NewWishForm: React.FC = () => {
                 <div className={classes.actions}>
                     <button 
                         className={classes.submitButton}
-                        disabled={wishesCtx.isLoadingState}>
-                            {wishesCtx.isLoadingState ? <BiLoaderAlt className='loader__element loader__element_button'/> : 'Add wish'}
+                        // disabled={wishesCtx.isLoadingState}
+                        >
+                            {/* {wishesCtx.isLoadingState ? <BiLoaderAlt className='loader__element loader__element_button'/> : 'Add wish'} */}
                     </button>
                 </div>
             </form>

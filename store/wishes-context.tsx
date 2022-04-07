@@ -18,7 +18,7 @@ type WishContextObj = {
     setModalState: (isOpen: boolean) => void,
     addWish: (data: SendWishData) => Promise<void>,
     removeWish: (id: string) => Promise<void>,
-    fetchWishes: () => Promise<void>,
+    // fetchWishes: () => Promise<void>,
     getWishFullData: (id: string) => Promise<void>
 }
 
@@ -28,9 +28,8 @@ export const WishesContext = React.createContext<WishContextObj>({
     isModalOpen: false,
     isActualWishes: false,
     setModalState: (isOpen: boolean) => {},
-    // updateItems: () => {},
     addWish: async () => {},
-    fetchWishes: async () => {}, 
+    // fetchWishes: async () => {}, 
     removeWish: async (id: string) => {},
     getWishFullData: async (id: string) => {},
 });
@@ -81,17 +80,17 @@ const WishesContextProvider: React.FC = (props) => {
         }
     };
 
-    const fetchWishesHandler = async () => {
-        setIsloading(true);
-        const res = await fetch('api/wishes');
-        const result = await res.json();
+    // const fetchWishesHandler = async () => {
+    //     setIsloading(true);
+    //     const res = await fetch('api/wishes');
+    //     const result = await res.json();
 
-        result.wishes.sort((a: any, b: any) => Date.parse(b.date) - Date.parse(a.date))
+    //     result.wishes.sort((a: any, b: any) => Date.parse(b.date) - Date.parse(a.date))
         
-        setWishes(result.wishes)
-        setIsloading(false)
-        setDataIsCurrent(true)
-    }
+    //     setWishes(result.wishes)
+    //     setIsloading(false)
+    //     setDataIsCurrent(true)
+    // }
 
     const setModalStateHandler = (isOpen: boolean | ((prevState: boolean) => boolean)) => {
         setIsModal(isOpen)
@@ -120,7 +119,7 @@ const WishesContextProvider: React.FC = (props) => {
         setModalState: setModalStateHandler,
         addWish: addWishHandler,
         // updateItems: updateItemsHandler,
-        fetchWishes: fetchWishesHandler,
+        // fetchWishes: fetchWishesHandler,
         getWishFullData: getWishHandler,
         removeWish: removeWishHandler,
     };
