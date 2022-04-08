@@ -7,7 +7,7 @@ import { BiLoaderAlt } from "react-icons/bi";
 import { SendWishData } from "../../types/wish";
 
 const NewWishForm: React.FC = () => {
-    const { loading } = useTypedSelector((state) => state.wish);
+    const { adding } = useTypedSelector((state) => state.wish);
     const { addWish, closeModal } = useActions();
 
     const titleInputRef = useRef<HTMLInputElement>(null);
@@ -49,8 +49,8 @@ const NewWishForm: React.FC = () => {
                     <input id='description' autoComplete="false" placeholder={'Comment'} ref={descriptionInputRef} />
                 </div>
                 <div className={classes.actions}>
-                    <button className={classes.submitButton} disabled={loading}>
-                        {loading ? <BiLoaderAlt className='loader__element loader__element_button'/> : 'Add wish'}
+                    <button className={classes.submitButton} disabled={adding}>
+                        {adding ? <BiLoaderAlt className='loader__element loader__element_button'/> : 'Add wish'}
                     </button>
                 </div>
             </form>

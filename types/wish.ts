@@ -13,6 +13,11 @@ interface RemoveWishSuccessAction {
     payload: string;
 }
 
+interface AfterRemoveWishSuccessAction {
+    type: WishActionTypes.AFTER_REMOVE_WISH_SUCCESS,
+    payload: string;
+}
+
 interface AddWishAction {
     type: WishActionTypes.ADD_WISH,
 }
@@ -43,6 +48,7 @@ export enum WishActionTypes {
     ADD_WISH_SUCCESS = "ADD_WISH_SUCCESS",
     REMOVE_WISH = "REMOVE_WISH",
     REMOVE_WISH_SUCCESS = "REMOVE_WISH_SUCCESS",
+    AFTER_REMOVE_WISH_SUCCESS = "AFTER_REMOVE_WISH_SUCCESS",
     FETCH_WISHES_SUCCESS = "FETCH_WISHES_SUCCESS",
     FETCH_WISHES_ERROR = "FETCH_WISHES_ERROR",
 }
@@ -52,8 +58,12 @@ export interface WishState {
     loading: boolean,
     adding: boolean,
     deleting: boolean,
+    deletedId: null | string,
     error: null | string,
 }
 
-export type WishAction = FetchWisheAction | FetchWisheErrorAction  | AddWishSuccessAction |
- FetchWisheSuccessAction | RemoveWishAction| RemoveWishSuccessAction | AddWishAction;
+export type WishAction = FetchWisheAction 
+| FetchWisheErrorAction | AddWishSuccessAction 
+| AfterRemoveWishSuccessAction | FetchWisheSuccessAction 
+| RemoveWishAction | RemoveWishSuccessAction 
+| AddWishAction;

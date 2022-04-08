@@ -9,17 +9,17 @@ import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { useActions } from "../../hooks/useActions";
 
 const WishCard: React.FC<{ wish: Wish }> = (props) => {
-    const router = useRouter();
-    const { loading, error } = useTypedSelector((state) => state.wish);
+    const { deleting, deletedId } = useTypedSelector((state) => state.wish);
     const { removeWish } = useActions();
-    // const cardClasses = `${isDeleting && classes.wishCard__fadeOut} ${classes.wishCard}`
+    const router = useRouter();
 
     const getDetailedInfoHandler = (event: React.MouseEvent) => {
         router.push('/wish-list/' + props.wish.id);
     };
 
-    const deleteWishHandler = (id: string) => {
-        removeWish(id);
+    let cardClasses = classes.wishCard;
+    if (deletedId === props.wish.id) {
+        cardClasses = `${classes.wishCard} ${classes.wishCard__fadeOut}`; 
     }
 
     const normalizeDate = (): string => {
@@ -32,11 +32,11 @@ const WishCard: React.FC<{ wish: Wish }> = (props) => {
             return 'вчера'
         }
         return moment(date).format('DD.MM.YY в HH:mm')
-    } 
+    }
 
     return (
-        <div className={classes.wishCard}>
-            <IconButton onClickHandler={deleteWishHandler.bind(null, props?.wish.id as string)} isDisabled={false}>
+        <div className={cardClasses}>
+            <IconButton onClickHandler={removeWish.bind(null, props?.wish.id as string)} isDisabled={deleting}>
                 <MdDelete />
             </IconButton>
             <div className={classes.wishCard__baseInfo}>
