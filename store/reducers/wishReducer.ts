@@ -1,3 +1,4 @@
+import { Reducer } from "redux";
 import Wish from "../../models/wish";
 import { WishAction, WishState, WishActionTypes } from "../../types/wish";
 
@@ -9,7 +10,7 @@ const initialState = {
     error: null,
 }
 
-export const wishReducer = (state = initialState, action: WishAction): WishState => {
+export const wishReducer: Reducer<WishState, WishAction> = (state = initialState, action: WishAction): WishState => {
     switch (action.type) {
         case WishActionTypes.FETCH_WISHES:
             return { ...initialState, loading: true }
@@ -21,10 +22,10 @@ export const wishReducer = (state = initialState, action: WishAction): WishState
             return { ...initialState, error: action.payload, wishes: state.wishes }
 
         case WishActionTypes.ADD_WISH:
-            return { ...initialState, wishes: state.wishes }
+            return { ...initialState, loading: true, wishes: state.wishes }
 
         case WishActionTypes.ADD_WISH_SUCCESS:
-            return { ...initialState, wishes: [action.payload, ...state.wishes]  }
+            return { ...initialState, wishes: [action.payload, ...state.wishes] }
 
         case WishActionTypes.REMOVE_WISH:
             return { ...initialState, loading: true, wishes: state.wishes }

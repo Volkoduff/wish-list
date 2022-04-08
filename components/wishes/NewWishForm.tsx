@@ -4,6 +4,7 @@ import { BsArrowLeft } from "react-icons/bs"
 import { useActions } from "../../hooks/useActions";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { BiLoaderAlt } from "react-icons/bi";
+import { SendWishData } from "../../types/wish";
 
 const NewWishForm: React.FC = () => {
     const { loading } = useTypedSelector((state) => state.wish);
@@ -25,11 +26,10 @@ const NewWishForm: React.FC = () => {
             return;
         }
 
-        const data = {
+        const data: SendWishData = {
             title: enteredText,
             category: categoryText,
             description: descriptionText,
-            date: new Date(),
         }
 
         addWish(data);

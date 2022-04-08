@@ -2,12 +2,11 @@ import Card from "../ui/Card/Card";
 import classes from "./WishCard.module.scss";
 import * as React from "react";
 import Head from "next/head";
-import { useContext } from "react";
-import { WishesContext } from "../../store/wishes-context";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 const WishDetails: React.FC<{ id: string }> = (props) => {
-    const wishCtx = useContext(WishesContext);
-    const wish = wishCtx.items.find((wish) => wish.id === props.id)
+    const { wishes } = useTypedSelector((state) => state.wish);
+    const wish = wishes.find((wish) => wish.id === props.id);
 
     return (
         <React.Fragment>

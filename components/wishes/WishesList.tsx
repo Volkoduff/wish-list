@@ -8,7 +8,7 @@ import WishListElement from "./WishListElement";
 
 const WishList: React.FC = (props) => {
     const { wishes, loading, error } = useTypedSelector((state) => state.wish);
-    wishes.sort((a: { date: string; }, b: { date: string; }) => Date.parse(b.date) - Date.parse(a.date));
+    wishes.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
 
     const {fetchWishes} = useActions();
     useEffect(() => {

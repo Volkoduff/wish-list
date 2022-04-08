@@ -3,8 +3,7 @@ class Wish {
     category: string;
     description: string;
     id?: string;
-    isNew?: false;
-    date?: Date;
+    date!: string;
 
     constructor(wishTitle: string, wishCategory: string = 'base', wishDescription: string, id: string) {
         this.title = wishTitle;

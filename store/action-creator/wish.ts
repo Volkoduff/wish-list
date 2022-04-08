@@ -1,4 +1,5 @@
 import { Dispatch } from "redux"
+import Wish from "../../models/wish";
 import { SendWishData, WishAction, WishActionTypes } from "../../types/wish";
 
 export const fetchWishes = () => {
@@ -12,9 +13,9 @@ export const fetchWishes = () => {
                 payload: result.wishes
             })
         } catch (e) {
-            dispatch({ 
-                type: WishActionTypes.FETCH_WISHES_ERROR, 
-                payload: 'Произошла ошибка при зазрузке списка' 
+            dispatch({
+                type: WishActionTypes.FETCH_WISHES_ERROR,
+                payload: 'Произошла ошибка при зазрузке списка'
             })
         }
     }
@@ -34,9 +35,9 @@ export const removeWish = (id: string) => {
                 payload: deleteItemId
             })
         } catch (e) {
-            dispatch({ 
-                type: WishActionTypes.FETCH_WISHES_ERROR, 
-                payload: 'Произошла ошибка при удалении' 
+            dispatch({
+                type: WishActionTypes.FETCH_WISHES_ERROR,
+                payload: 'Произошла ошибка при удалении'
             })
         }
     }
@@ -46,24 +47,21 @@ export const addWish = (data: SendWishData) => {
     return async (dispatch: Dispatch<WishAction>) => {
         try {
             dispatch({ type: WishActionTypes.ADD_WISH });
-            const {title, category, description, date} = data;
             const response = await fetch('api/new-wish', {
                 method: "POST",
                 body: JSON.stringify(data),
-                headers: {'Content-type': 'application/json'}
+                headers: { 'Content-type': 'application/json' }
             })
-            const result = await response.json();
+            const {newWish} = await response.json();
+
             dispatch({
-                type: WishActionTypes.ADD_WISH_SUCCESS,
-                payload: data
+                type: WishActionTypes.ADD_WISH_SUCCESS, payload: newWish
             })
         } catch (e) {
-            dispatch({ 
-                type: WishActionTypes.FETCH_WISHES_ERROR, 
-                payload: 'Произошла ошибка при добавлении' 
+            dispatch({
+                type: WishActionTypes.FETCH_WISHES_ERROR,
+                payload: 'Произошла ошибка при добавлении'
             })
         }
     }
 }
-
-

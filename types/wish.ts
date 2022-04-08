@@ -35,7 +35,6 @@ export interface SendWishData {
     title: string;
     category: string;
     description: string;
-    date: Date;
 }
 
 export enum WishActionTypes {

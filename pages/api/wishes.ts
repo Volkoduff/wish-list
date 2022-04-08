@@ -1,10 +1,11 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { MongoClient } from "mongodb"
+import Wish from "../../models/wish";
 const mongodbParams: string = 'mongodb+srv://db_user:Biosavar@cluster0.sq4au.mongodb.net/wishes?retryWrites=true&w=majority'
 
 type ResponseData = {
     message: string,
-    wishes: any,
+    wishes: Wish[],
 }
 
 const handler = async (
