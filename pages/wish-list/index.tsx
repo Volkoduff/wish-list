@@ -1,44 +1,27 @@
 import {NextPage} from "next";
 import React, {Fragment, useContext, useEffect} from "react";
-import { BiLoaderAlt } from "react-icons/bi"
 import WishList from "../../components/wishes/WishesList";
 import Head from "next/head";
 import NewWishForm from "../../components/wishes/NewWishForm";
-import { WishesContext } from "../../store/wishes-context";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { useActions } from "../../hooks/useActions";
 
 const WishListPage: NextPage = () => {
-    const wishesCtx = useContext(WishesContext);
+    const { loading, error } = useTypedSelector((state) => state.wish);
+    const { modal } = useTypedSelector((state) => state.ui);
+    const { openModal } = useActions();
 
-    useEffect(() => { 
-        console.log(wishesCtx.isActualWishes)
-        if (!wishesCtx.isActualWishes) {
-            wishesCtx.fetchWishes()
-        }
-        console.log(wishesCtx.isActualWishes)
-     }, []);
-
-    const openModalHandler = () => {
-        // Рефактор требуется!!
-        wishesCtx.setModalState(true)
-    }
+    const newWishButton = (
+        <button disabled={loading} className='addWishButton' onClick={openModal}>+</button>
+    )
 
     return (
         <Fragment>
             <Head>
                 <title>Ваш список</title>
             </Head>
-            <button 
-                disabled={wishesCtx.isLoadingState}
-                className='addWishButton' 
-                onClick={openModalHandler}>
-                    +
-                </button>
-            {wishesCtx.isModalOpen && <NewWishForm />}
-            {wishesCtx.isLoadingState && (
-                <div className="loader__wrap">
-                    <BiLoaderAlt className='loader__element loader__element_section'/>
-                </div>
-            )}
+            {newWishButton}
+            {modal && <NewWishForm />}
             <WishList/>
         </Fragment>
     )

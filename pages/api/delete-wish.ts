@@ -20,7 +20,8 @@ const handler = async (
         client.close();
 
         const resultJSON = {
-            message: 'Delete successful, removedQty: ' + result.deletedCount,
+            message: 'Успешно удалено ' + result.deletedCount + 'шт.',
+            deleteItemId: id,
         }
 
         res.status(200).json(resultJSON)
