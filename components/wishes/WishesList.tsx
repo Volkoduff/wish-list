@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { BiLoaderAlt } from "react-icons/bi";
-import { useDispatch } from "react-redux";
 import { useActions } from "../../hooks/useActions";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import Wish from "../../models/wish";
@@ -9,11 +8,9 @@ import WishListElement from "./WishListElement";
 
 const WishList: React.FC = (props) => {
     const { wishes, loading, error } = useTypedSelector((state) => state.wish);
-
     wishes.sort((a: { date: string; }, b: { date: string; }) => Date.parse(b.date) - Date.parse(a.date));
 
     const {fetchWishes} = useActions();
-
     useEffect(() => {
         fetchWishes()
     }, [])

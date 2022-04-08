@@ -1,24 +1,37 @@
+import Wish from "../../models/wish";
 import { WishAction, WishState, WishActionTypes } from "../../types/wish";
 
 const initialState = {
     wishes: [],
     loading: false,
-    modal: false,
+    adding: false,
+    deleting: false,
     error: null,
 }
 
 export const wishReducer = (state = initialState, action: WishAction): WishState => {
-    switch(action.type) {
+    switch (action.type) {
         case WishActionTypes.FETCH_WISHES:
-            return {loading: true, error: null, modal: false, wishes: []}
+            return { ...initialState, loading: true }
+
         case WishActionTypes.FETCH_WISHES_SUCCESS:
-            return {loading: false, error: null, modal: false, wishes: action.payload}
+            return { ...initialState, wishes: action.payload }
+
         case WishActionTypes.FETCH_WISHES_ERROR:
-            return {loading: false, error: action.payload, modal: false, wishes: []}
-        case WishActionTypes.ADD_WISHE:
-            return {loading: true, error: null, modal: true, wishes: []}
-        case WishActionTypes.FETCH_WISHES:
-            return {loading: true, error: null, modal: true, wishes: []}
+            return { ...initialState, error: action.payload, wishes: state.wishes }
+
+        case WishActionTypes.ADD_WISH:
+            return { ...initialState, wishes: state.wishes }
+
+        case WishActionTypes.ADD_WISH_SUCCESS:
+            return { ...initialState, wishes: [action.payload, ...state.wishes]  }
+
+        case WishActionTypes.REMOVE_WISH:
+            return { ...initialState, loading: true, wishes: state.wishes }
+
+        case WishActionTypes.REMOVE_WISH_SUCCESS:
+            return { ...initialState, loading: false, wishes: state.wishes.filter((wish: Wish) => wish.id !== action.payload)}
+
         default:
             return state
     }

@@ -32,7 +32,7 @@ const handler = async (
         client.close();
 
         const resultJSON = {
-            message: 'Message about from back',
+            message: 'Список успешно загружен',
             wishes: wishes
         }
         

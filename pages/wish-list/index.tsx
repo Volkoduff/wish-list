@@ -3,26 +3,25 @@ import React, {Fragment, useContext, useEffect} from "react";
 import WishList from "../../components/wishes/WishesList";
 import Head from "next/head";
 import NewWishForm from "../../components/wishes/NewWishForm";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { useActions } from "../../hooks/useActions";
 
 const WishListPage: NextPage = () => {
-    const openModalHandler = () => {
-        // Рефактор требуется!!
-        // wishesCtx.setModalState(true)
-    }
+    const { loading, error } = useTypedSelector((state) => state.wish);
+    const { modal } = useTypedSelector((state) => state.ui);
+    const { openModal } = useActions();
+
+    const newWishButton = (
+        <button disabled={loading} className='addWishButton' onClick={openModal}>+</button>
+    )
 
     return (
         <Fragment>
             <Head>
                 <title>Ваш список</title>
             </Head>
-            <button 
-                // disabled={wishesCtx.isLoadingState}
-                className='addWishButton' 
-                onClick={openModalHandler}>
-                    +
-                </button>
-            {/* <NewWishForm /> */}
-            {/* {wishesCtx.isModalOpen && <NewWishForm />} */}
+            {newWishButton}
+            {modal && <NewWishForm />}
             <WishList/>
         </Fragment>
     )
