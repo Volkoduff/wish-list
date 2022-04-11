@@ -40,19 +40,24 @@ const NewWishForm: React.FC = () => {
             <button onClick={closeModal} className={classes.closeButon} ><BsArrowLeft></BsArrowLeft></button>
             <form className={classes.form} onSubmit={submitHandler}>
                 <div className={classes.control}>
-                    <input type='text' required autoComplete="false" id='title' autoFocus placeholder={'Wish name*'} ref={titleInputRef} />
+                    <input type='text' required autoComplete="false" id='title' autoFocus placeholder={'Wish name*'} ref={titleInputRef} disabled={adding}/>
                 </div>
                 <div className={classes.control}>
-                    <input type='text' required autoComplete="false" id='category' placeholder={'HashTag*'} ref={categoryInputRef} />
+                    <input type='text' required autoComplete="false" id='category' placeholder={'HashTag*'} ref={categoryInputRef} disabled={adding}/>
                 </div>
                 <div className={classes.control}>
-                    <input id='description' autoComplete="false" placeholder={'Comment'} ref={descriptionInputRef} />
+                    <input id='description' autoComplete="false" placeholder={'Comment'} ref={descriptionInputRef} disabled={adding}/>
                 </div>
                 <div className={classes.actions}>
                     <button className={classes.submitButton} disabled={adding}>
                         {adding ? <BiLoaderAlt className='loader__element loader__element_button'/> : 'Add wish'}
                     </button>
                 </div>
+                {/* <div className="input__wrapper">
+                    <input type="file" name="file" id="input__image" className="input input__image"/>
+                    <label htmlFor="input__image" className="input-image__label">
+                        <BiDownload className="input__file-icon"></BiDownload>Добавить картинку</label>
+                </div> */}
             </form>
         </div>
     );

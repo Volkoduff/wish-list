@@ -151,3 +151,34 @@ li:hover > a {
 ::-webkit-scrollbar-thumb {
   background: $darkblue;
 }
+
+.input__wrapper {
+  text-align: center;
+  margin: 10px auto;
+  display: block;
+  width: fit-content;
+}
+
+.input-image__label {
+  align-items: center;
+  display: flex;
+}
+ 
+.input__image {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+}
+ 
+.input__file-icon-wrapper {
+  height: 1rem;
+  width: 1rem;
+}
+
+.input__file-icon {
+  margin-right: 5px;
+}
+
+input:disabled {
+  opacity: 0.5;
+}

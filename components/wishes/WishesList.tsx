@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, memo } from "react";
 import { BiLoaderAlt } from "react-icons/bi";
 import { useActions } from "../../hooks/useActions";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
@@ -6,13 +6,14 @@ import Wish from "../../models/wish";
 import classes from "./WishList.module.scss"
 import WishListElement from "./WishListElement";
 
-const WishList: React.FC = (props) => {
-    const { wishes, loading, error } = useTypedSelector((state) => state.wish);
+const WishList: React.FC = () => {
+    const { wishes, actualWishes, loading, error } = useTypedSelector((state) => state.wish);
     wishes.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
 
     const {fetchWishes} = useActions();
+
     useEffect(() => {
-        fetchWishes()
+        if(!actualWishes) fetchWishes()
     }, [])
 
     if (loading) {
@@ -34,4 +35,4 @@ const WishList: React.FC = (props) => {
     )
 };
 
-export default WishList;
+export default memo(WishList);

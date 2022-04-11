@@ -58,6 +58,7 @@ export interface WishState {
     loading: boolean,
     adding: boolean,
     deleting: boolean,
+    actualWishes: boolean,
     deletedId: null | string,
     error: null | string,
 }

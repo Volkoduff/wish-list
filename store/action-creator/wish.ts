@@ -1,4 +1,5 @@
 import { Dispatch } from "redux"
+import { UIActionTypes } from "../../types/ui";
 import { SendWishData, WishAction, WishActionTypes } from "../../types/wish";
 
 const DELETE_WISH_ANIMATION_TIMER_MS: number = 220;
@@ -41,7 +42,6 @@ export const removeWish = (id: string) => {
                     payload: deleteItemId
                 })
             }, DELETE_WISH_ANIMATION_TIMER_MS)
-
         } catch (e) {
             dispatch({
                 type: WishActionTypes.FETCH_WISHES_ERROR,
