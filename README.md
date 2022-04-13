@@ -1,8 +1,8 @@
-## WishList
+## WishList ===WORK IN PROGRESS===
 
 ```
-Add and remove your wishes
-
+Adds and removes your wishes
 ```
+Local start server by "npm run dev"
 
-## [Deployed on Vercel](https://wish-list-volkoduff.vercel.app/)
+## [Look at deployed last version](https://wish-list-volkoduff.vercel.app/)
