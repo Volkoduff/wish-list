@@ -53,11 +53,6 @@ const NewWishForm: React.FC = () => {
                         {adding ? <BiLoaderAlt className='loader__element loader__element_button'/> : 'Add wish'}
                     </button>
                 </div>
-                {/* <div className="input__wrapper">
-                    <input type="file" name="file" id="input__image" className="input input__image"/>
-                    <label htmlFor="input__image" className="input-image__label">
-                        <BiDownload className="input__file-icon"></BiDownload>Добавить картинку</label>
-                </div> */}
             </form>
         </div>
     );

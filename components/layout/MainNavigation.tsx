@@ -1,24 +1,35 @@
 import classes from "./MainNavigation.module.scss"
 import Link from "next/link";
 import { useRouter } from "next/router";
-
-const Menu = [
-    {title: 'Wish List', path: '/wish-list'},
-    {title: 'Exit', path: '/'},
-] 
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { useActions } from "../../hooks/useActions";
+import { Fragment } from "react";
 
 const MainNavigation: React.FC = () => {
+    const { loggedIn } = useTypedSelector((state) => state.ui)
+    const { logOut } = useActions();
+
+    const logoutHandler = () => {
+        logOut()
+    }
+
     const router = useRouter();
     return (
         <header className={classes.header}>
-            <Link href="/">
-                <div className={classes.logo}>WishList</div>
-            </Link>
+            <div className={classes.logo}>
+                WishList
+            </div>
             <nav className={classes.nav}>
                 <ul>
-                    {Menu.map((menuElement, key) => (
-                        <li key={key} className={router.pathname === menuElement.path ? 'active' : ''}><Link href={menuElement.path} passHref>{menuElement.title}</Link></li>
-                    ))}
+                    {!loggedIn && (<li className={router.pathname === '/login' ? 'active' : ''}><Link href='/login' passHref>Login</Link></li>)}
+                    {loggedIn && (
+                        <Fragment>
+                            <li className={router.pathname === '/wish-list' ? 'active' : ''}><Link href='/wish-list' passHref>Wish List</Link></li>
+                            <li onClick={logoutHandler}>
+                                <Link href='/'>Logout</Link>
+                            </li>
+                        </Fragment>
+                    )}
                 </ul>
             </nav>
         </header>
