@@ -12,3 +12,15 @@ export const closeModal = () => {
         dispatch({ type: UIActionTypes.CLOSE_MODAL });
     }
 }
+
+export const logIn = () => {
+    return (dispatch: Dispatch<UIAction>) => {
+        dispatch({type: UIActionTypes.LOG_IN})
+    }
+}
+
+export const logOut = () => {
+    return (dispatch: Dispatch<UIAction>) => {
+        dispatch({type: UIActionTypes.LOG_OUT})
+    }
+}
