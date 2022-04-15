@@ -14,7 +14,7 @@ export const uiReducer = (state = initialState, action: UIAction): UIState => {
         case UIActionTypes.LOG_IN:
                 return {...initialState, loggedIn: true}
         case UIActionTypes.LOG_OUT:
-                return {...initialState, loggedIn: false}
+                return {...initialState}
         default:
             return state
     }

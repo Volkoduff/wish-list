@@ -1,5 +1,5 @@
 import classes from "./../wishes/NewWishForm.module.scss"
-import { useState } from "react";
+import React, { useState } from "react";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { useActions } from "../../hooks/useActions";
 import { stat } from "fs";
@@ -13,9 +13,10 @@ const AuthorisationForm = () => {
 
     const { logIn } = useActions();
 
-    const submitHandler = () => {
+    const submitHandler = (event: React.FormEvent) => {
+        event.preventDefault()
         logIn();
-        router.replace('/')
+        router.push('/wish-list')
     }
 
     return (

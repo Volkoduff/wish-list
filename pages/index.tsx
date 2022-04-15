@@ -1,8 +1,16 @@
 import Head from 'next/head'
 import { NextPage } from 'next'
 import { Fragment } from 'react'
+import { useTypedSelector } from '../hooks/useTypedSelector';
 
 const HomePage: NextPage = () => {
+    const { loggedIn } = useTypedSelector((state) => state.ui);
+    let greeTingText = 'Welcome, нажмите LOGIN'
+    
+    if(loggedIn) {
+        greeTingText = 'Просто добавьте то что не хотите забыть'
+    }
+    
     return (
         <Fragment>
             <Head>
@@ -11,7 +19,7 @@ const HomePage: NextPage = () => {
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
             <main>
-                <h2>Welcome!</h2>
+                <h1>{greeTingText}</h1>
             </main>
         </Fragment>
     );
