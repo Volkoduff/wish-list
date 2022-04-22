@@ -5,12 +5,14 @@ import Head from "next/head";
 import NewWishForm from "../../components/wishes/NewWishForm";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { useActions } from "../../hooks/useActions";
+import { QueryClient, QueryClientProvider } from "react-query";
+
+const queryClient = new QueryClient();
 
 const WishListPage: NextPage = () => {
-    const { loading, error } = useTypedSelector((state) => state.wish);
-    const { modal } = useTypedSelector((state) => state.ui);
+    const { loading, newWishModal } = useTypedSelector((state) => state.wish);
     const { openModal } = useActions();
-
+    
     const newWishButton = (
         <button disabled={loading} className='addWishButton' onClick={openModal}>+</button>
     )
@@ -20,8 +22,11 @@ const WishListPage: NextPage = () => {
             <Head>
                 <title>Ваш список</title>
             </Head>
+            <QueryClientProvider client={queryClient}>
+                {/* <Wishes></Wishes> */}
+            </QueryClientProvider>
             {newWishButton}
-            {modal && <NewWishForm />}
+            {newWishModal && <NewWishForm />}
             <WishList/>
         </Fragment>
     )

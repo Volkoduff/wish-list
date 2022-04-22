@@ -1,5 +1,4 @@
 import { Dispatch } from "redux"
-import { UIActionTypes } from "../../types/ui";
 import { SendWishData, WishAction, WishActionTypes } from "../../types/wish";
 
 const DELETE_WISH_ANIMATION_TIMER_MS: number = 220;
@@ -65,11 +64,24 @@ export const addWish = (data: SendWishData) => {
             dispatch({
                 type: WishActionTypes.ADD_WISH_SUCCESS, payload: newWish
             })
+
         } catch (e) {
             dispatch({
                 type: WishActionTypes.FETCH_WISHES_ERROR,
                 payload: 'Произошла ошибка при добавлении'
             })
         }
+    }
+}
+
+export const openModal = () => {
+    return (dispatch: Dispatch<WishAction>) => {
+        dispatch({ type: WishActionTypes.OPEN_NEW_WISH_MODAL });
+    }
+}
+
+export const closeModal = () => {
+    return (dispatch: Dispatch<WishAction>) => {
+        dispatch({ type: WishActionTypes.CLOSE_NEW_WISH_MODAL });
     }
 }

@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import React, { useEffect, memo } from "react";
 import { BiLoaderAlt } from "react-icons/bi";
 import { useActions } from "../../hooks/useActions";
@@ -7,13 +8,17 @@ import classes from "./WishList.module.scss"
 import WishListElement from "./WishListElement";
 
 const WishList: React.FC = () => {
+    const router = useRouter();
     const { wishes, actualWishes, loading, error } = useTypedSelector((state) => state.wish);
+
     wishes.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
 
     const {fetchWishes} = useActions();
 
     useEffect(() => {
-        if(!actualWishes) fetchWishes()
+        if(!actualWishes) {
+            fetchWishes()
+        }
     }, [])
 
     if (loading) {
@@ -28,9 +33,16 @@ const WishList: React.FC = () => {
         return <h3>{error}</h3>
     }
 
+    let wishesList;
+    if(!wishes.length) {
+        wishesList = <h3 className="text-message-big">Пока ничего нет, может добавить?</h3>
+    } else {
+        wishesList = wishes.map((wish: Wish) => <WishListElement key={wish.id} wishData={wish}/>)
+    }
+
     return (
         <ul className={classes.wishList}>
-            {wishes.map((wish: Wish) => <WishListElement key={wish.id} wishData={wish}/>)}
+            {wishesList}
         </ul>
     )
 };
