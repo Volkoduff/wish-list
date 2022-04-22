@@ -6,6 +6,7 @@ const initialState = {
     wishes: [],
     loading: false,
     adding: false,
+    newWishModal: false,
     deleting: false,
     actualWishes: false,
     deletedId: null,
@@ -17,6 +18,12 @@ export const wishReducer: Reducer<WishState, WishAction> = (state = initialState
         case WishActionTypes.FETCH_WISHES:
             return { ...initialState, loading: true }
 
+        case WishActionTypes.OPEN_NEW_WISH_MODAL:
+            return { ...initialState, newWishModal: true, wishes: state.wishes }
+
+        case WishActionTypes.CLOSE_NEW_WISH_MODAL:
+            return { ...initialState, wishes: state.wishes }
+
         case WishActionTypes.FETCH_WISHES_SUCCESS:
             return { ...initialState, actualWishes: true, wishes: action.payload }
 
@@ -24,7 +31,7 @@ export const wishReducer: Reducer<WishState, WishAction> = (state = initialState
             return { ...initialState, error: action.payload, wishes: state.wishes }
 
         case WishActionTypes.ADD_WISH:
-            return { ...initialState, adding: true, wishes: state.wishes }
+            return { ...initialState, newWishModal: true, adding: true, wishes: state.wishes }
 
         case WishActionTypes.ADD_WISH_SUCCESS:
             return { ...initialState, actualWishes: true, wishes: [action.payload, ...state.wishes] }

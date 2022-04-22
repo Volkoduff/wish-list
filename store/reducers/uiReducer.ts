@@ -8,9 +8,9 @@ const initialState = {
 export const uiReducer = (state = initialState, action: UIAction): UIState => {
     switch(action.type) {
         case UIActionTypes.CLOSE_MODAL:
-            return {...initialState}
+            return {...initialState, loggedIn: true}
         case UIActionTypes.OPEN_MODAL:
-                return {...initialState, modal: true}
+                return {...initialState, modal: true, loggedIn: true}
         case UIActionTypes.LOG_IN:
                 return {...initialState, loggedIn: true}
         case UIActionTypes.LOG_OUT:
